@@ -1,0 +1,33 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+
+// JDK 8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    // spring
+    compile("org.springframework:spring-webmvc:5.0.9.RELEASE")
+    
+    // logging
+    compile("org.slf4j:slf4j-api:1.7.25")
+    compile("org.slf4j:slf4j-simple:1.7.25")
+    runtime("org.apache.logging.log4j:log4j-slf4j-impl:2.11.1")
+    runtime("org.apache.logging.log4j:log4j-core:2.11.1")
+    
+    // view templating
+    compile 'javax.servlet:jstl:1.2'
+    compile 'javax.servlet:javax.servlet-api:4.0.1'
+  
+    testCompile("junit:junit")
+}
