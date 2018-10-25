@@ -18,12 +18,21 @@ repositories {
 dependencies {
     // spring
     compile("org.springframework:spring-webmvc:5.0.9.RELEASE")
+    compile("org.springframework.data:spring-data-jpa:2.1.1.RELEASE")
+    
+    // JPA
+    compile("javax.persistence:javax.persistence-api:2.2")
+    
+    // hibernate
+    runtime("org.hibernate:hibernate-core:5.3.7.Final")
+    compile("org.hibernate.validator:hibernate-validator:6.0.13.Final")
+    
+    // mysql JDBC connector
+    compile("mysql:mysql-connector-java:8.0.13")
     
     // logging
     compile("org.slf4j:slf4j-api:1.7.25")
     compile("org.slf4j:slf4j-simple:1.7.25")
-    runtime("org.apache.logging.log4j:log4j-slf4j-impl:2.11.1")
-    runtime("org.apache.logging.log4j:log4j-core:2.11.1")
     
     // view templating
     compile 'javax.servlet:jstl:1.2'
