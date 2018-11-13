@@ -22,7 +22,7 @@
 			placeholder="Password" required>
 		<span>
 			Don't have an account?
-			<a href="register.jsp">Sign up</a>
+			<a href="register">Sign up</a>
 		</span>
 		<br/><br/>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
