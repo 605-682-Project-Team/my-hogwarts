@@ -36,5 +36,22 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring-core-config.xml</param-value>
 	</context-param>
+	
+	<error-page>
+    	<!-- Missing resource -->
+    	<error-code>404</error-code>
+    	<location>/views/error404.html</location>
+	</error-page>
+	
+	  <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Protected Area</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
 
 </web-app>

@@ -10,7 +10,7 @@
 <title>My Hogwarts</title>
 </head>
 <body class="text-center">
-	<form class="form-signin" action="login" method="post">
+	<form class="form-signin" action="login" method="POST">
 		<img class="mb-4" src="resources/images/hogwarts-crest.png" alt=""
 			width="200" height="200" />
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>

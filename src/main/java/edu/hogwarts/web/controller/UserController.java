@@ -44,5 +44,13 @@ public class UserController {
 		return new ModelAndView("redirect:/", new ModelMap());
 	}
 	
+	
+	@RequestMapping(value="/restricted/account", method= {RequestMethod.GET})
+	public ModelAndView showUserAccount(HttpServletRequest request) {
+		
+		
+		return new ModelAndView("restricted/edit-registration", new ModelMap());
+	}
+	
 
 }

@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,7 +55,7 @@ public class RootController {
 		return "register";
 	}
 	
-	@RequestMapping(value= "/login", method= {RequestMethod.POST})
+	@RequestMapping(value= "/login", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView login(HttpServletRequest request, HttpSession session) {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -79,10 +78,10 @@ public class RootController {
 		return new ModelAndView("redirect:/login", new HashMap<String, Object>());
 	}
 	
-	@RequestMapping(value= "/logout", method= {RequestMethod.POST})
-	public String logout(HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value= "/logout", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView logout(HttpServletRequest request, HttpSession session) {
 		session.invalidate();
-		return "login";
+		return new ModelAndView("redirect:/", new HashMap<String, Object>());
 	}
 	
 	@RequestMapping(value= "/restricted/dashboard", method= {RequestMethod.GET, RequestMethod.POST})
