@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="../resources/images/hogwarts_crest_icon.ico">
-<link href="../resources/css/lib/bootstrap.min.css" rel="stylesheet">
-  <link href="../resources/css/dashboard.css" rel="stylesheet">
-<script src="../resources/js/lib/jquery-3.3.1.min.js"></script>
-<script src="../resources/js/lib/bootstrap.min.js"></script>
-<script src="../resources/js/lib/popper.min.js"></script>
-
+<%@ include file="fragments/resources.jsp" %>
 <title>My Hogwarts Courses</title>
 </head>
+
+
+<%@page import="edu.hogwarts.persistence.entity.Course"%>
+<%@page import="edu.hogwarts.persistence.entity.Course.CourseCategory"%>
 
 <body class="bg-light">
 	 <%@ include file="fragments/navbar.jsp" %>
 	 <div class="container">
 	 	<div class="row" >
 	 		<div class="col-md-3">
-	 			<div class="card">
-	 				<div class="card-header">Filters</div>
-	 				<div class="card-body">
- 						<h5 class="card-title">Professor</h5>
- 						<p>professor check boxes</p>
-	 				</div>
-	 				<hr />
-	 				<div class="card-body">
- 						<h5 class="card-title">Category</h5>
- 						<p>category checkboxes</p>
-	 				</div>
-	 				<div class="card-footer">
-	 					<a href="course-listing" class="btn btn-success btn-md"> Refresh </a>
-	 				</div>
-	 			</div>
+	 			<form action="course-listing" method="post">
+		 			<div class="card">
+		 				<div class="card-header">Filters</div>
+		 				<div class="card-body">
+	 						<h5 class="card-title">Category</h5>
+	 						<% 
+	 							CourseCategory checked;
+	 							String checkedStr = request.getParameter("category");
+	 							if (checkedStr == null || checkedStr.isEmpty()) {
+	 								checked = null;
+	 							} else {
+	 								checked = CourseCategory.valueOf(checkedStr);
+	 							}
+	 							
+	 						%>
+	 						<div class="radio">
+	  							<label><input type="radio" name="category" value="<%= CourseCategory.CORE %>" <%if (CourseCategory.CORE.equals(checked)) { %> checked <% } %>><%= CourseCategory.CORE %></label>
+							</div>
+							<div class="radio">
+							    <label><input type="radio" name="category" value="<%= CourseCategory.ELECTIVE %>" <%if (CourseCategory.ELECTIVE.equals(checked)) { %> checked <% } %>><%= CourseCategory.ELECTIVE %></label>
+							</div>
+							<div class="radio">
+	  							<label><input type="radio" name="category" value="<%= CourseCategory.EXTRA_CURRICULAR %>" <%if (CourseCategory.EXTRA_CURRICULAR.equals(checked)) { %> checked <% } %>><%= CourseCategory.EXTRA_CURRICULAR %></label>
+							</div>
+		 				</div>
+		 				<div class="card-footer">
+		 					<button class="btn btn-success btn-md" type="submit">Refresh</button>
+		 				</div>
+		 			</div>
+	 			</form>
 	 		</div>
 	 		<div class="col-md-9">
 	 			<table class="table table-hover">
@@ -44,18 +56,21 @@
 	 					</tr>
 	 				</thead>
 	 				<tbody>
+	 					<% 
+	 						Iterable<Course> courses = (Iterable<Course>) request.getAttribute("courses");
+	 						for (Course course : courses) { 
+	 					%>
 	 					<tr>
-	 						<td><a href="">Potions</a></td>
-	 						<td>Severus Snape</td>
-	 						<td>Core</td>
-	 						<td><a href="course-listing" class="btn btn-primary btn-md"> Add to Cart </a></td>
+	 						<td><a href="course-listing/<%= course.getId() %>"><%= course.getName() %></a></td>
+	 						<td><%= course.getProfessor() %></td>
+	 						<td><%= course.getCategory() %></td>
+	 						<td>
+	 							<form action="<%= request.getContextPath() %>/restricted/shopping-cart/add-course/<%= course.getId() %>" method="post">
+									<input type="submit" class="btn btn-primary btn-md" value="Add to Cart" />
+								</form>
+	 						</td>
 	 					</tr>
-	 					<tr>
-	 						<td><a href="">Defense Against the Dark Arts</a></td>
-	 						<td>Remus Lupin</td>
-	 						<td>Core</td>
-	 						<td><a href="course-listing" class="btn btn-primary btn-md"> Add to Cart </a></td>
-	 					</tr>
+	 					<% } %>
 	 				</tbody>
 	 			</table>
 	 		</div>

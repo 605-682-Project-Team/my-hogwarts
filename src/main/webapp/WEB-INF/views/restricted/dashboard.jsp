@@ -2,13 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="../resources/images/hogwarts_crest_icon.ico">
-<link href="../resources/css/lib/bootstrap.min.css" rel="stylesheet">
-  <link href="../resources/css/dashboard.css" rel="stylesheet">
-<script src="../resources/js/lib/jquery-3.3.1.min.js"></script>
-<script src="../resources/js/lib/bootstrap.min.js"></script>
-<script src="../resources/js/lib/popper.min.js"></script>
+<%@ include file="fragments/resources.jsp" %>
 
 <title>My Hogwarts Dashboard</title>
 </head>
@@ -25,7 +19,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="../resources/images/hogwarts-castle.jpg" alt="First slide">
+            <img class="first-slide" src="<%= request.getContextPath() %>/resources/images/hogwarts-castle.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1>Historic Hogwarts Castle</h1>
@@ -34,7 +28,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="../resources/images/quidditch.jpg" alt="Second slide">
+            <img class="second-slide" src="<%= request.getContextPath() %>/resources/images/quidditch.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
                 <h1>Athletics</h1>
@@ -43,7 +37,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="third-slide" src="../resources/images/great-hall.jpg" alt="Third slide">
+            <img class="third-slide" src="<%= request.getContextPath() %>/resources/images/great-hall.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
                 <h1>World Class Dining</h1>

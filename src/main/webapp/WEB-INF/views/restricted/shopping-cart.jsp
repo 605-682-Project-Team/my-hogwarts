@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="../resources/images/hogwarts_crest_icon.ico">
-<link href="../resources/css/lib/bootstrap.min.css" rel="stylesheet">
-  <link href="../resources/css/dashboard.css" rel="stylesheet">
-<script src="../resources/js/lib/jquery-3.3.1.min.js"></script>
-<script src="../resources/js/lib/bootstrap.min.js"></script>
-<script src="../resources/js/lib/popper.min.js"></script>
-
+<%@ include file="fragments/resources.jsp" %>
 <title>My Hogwarts Shopping Cart</title>
 </head>
 

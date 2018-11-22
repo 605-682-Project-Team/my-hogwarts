@@ -4,8 +4,7 @@
 
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<img class="nav-bar-icon" src="../resources/images/hogwarts-crest.png"
-			alt="First slide"> <a class="navbar-brand" href="dashboard">MyHogwarts</a>
+		<img class="nav-bar-icon" src="<%= request.getContextPath() %>/resources/images/hogwarts-crest.png"> <a class="navbar-brand" href="<%= request.getContextPath() %>/restricted/dashboard">MyHogwarts</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarCollapse" aria-controls="navbarCollapse"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -14,13 +13,13 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="dashboard">Home <span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="account">Account</a>
+					href="<%= request.getContextPath() %>/restricted/dashboard">Home <span class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/restricted/account">Account</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="course-listing">Courses</a>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/restricted/course-listing">Courses</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="course-material-listing">Course Materials</a></li>
+					href="<%= request.getContextPath() %>/restricted/course-material-listing">Course Materials</a></li>
 				<li class="nav-item mt-2 mt-md-0"><a class="nav-link"
 					href="${pageContext.request.contextPath}/logout">Logout</a></li>
 			</ul>
@@ -36,7 +35,7 @@
 					itemsInCart = shoppingCart.getNumberOfItems();
 				}
 			%>
-			</span> <a href="shopping-cart" class="btn btn-primary btn-md"> Shopping
+			</span> <a href="<%= request.getContextPath() %>/restricted/shopping-cart" class="btn btn-primary btn-md"> Shopping
 					Cart <span class="badge badge-light"><%= itemsInCart %></span></a>
 			</span>
 		</div>

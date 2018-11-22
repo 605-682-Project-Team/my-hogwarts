@@ -74,6 +74,7 @@ public class RootController {
 			}
 		} else {
 			logger.error("{} attempted to log in, but the user does not exists!", email);
+			return new ModelAndView("redirect:/", new HashMap<String, Object>());
 		}
 		return new ModelAndView("redirect:/login", new HashMap<String, Object>());
 	}
