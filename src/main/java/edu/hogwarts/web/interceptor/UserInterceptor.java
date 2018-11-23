@@ -23,12 +23,12 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-		logger.info("Entered postHandle() - {}", request.getRequestURI());
+		logger.debug("Entered postHandle() - {}", request.getRequestURI());
 		
 		HttpSession session = request.getSession();
-		logger.info("Session Id: {}", session.getId());
-		logger.info("Session Create Time: {}", session.getCreationTime());
-		logger.info("Session Last Accessed Time: {}", session.getLastAccessedTime());
+		logger.debug("Session Id: {}", session.getId());
+		logger.debug("Session Create Time: {}", session.getCreationTime());
+		logger.debug("Session Last Accessed Time: {}", session.getLastAccessedTime());
 		
 		try {
 			if (session != null && session.getAttribute(HogwartsConstants.ATTRIBUTE_CURRENT_USER) == null) {
@@ -39,7 +39,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 				}
 			} else {
 				User user = (User) session.getAttribute(HogwartsConstants.ATTRIBUTE_CURRENT_USER);
-				logger.info("User {} is accessing {}", user.getEmail(), request.getRequestURI());
+				logger.debug("User {} is accessing {}", user.getEmail(), request.getRequestURI());
 			}
 		} catch (Exception e) {
 			logger.error("Failed to check user session.", e);

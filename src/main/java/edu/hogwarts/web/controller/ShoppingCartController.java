@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import edu.hogwarts.persistence.entity.Course;
+import edu.hogwarts.persistence.entity.CourseMaterial;
+import edu.hogwarts.persistence.repository.CourseMaterialRepository;
 import edu.hogwarts.persistence.repository.CourseRepository;
 import edu.hogwarts.util.HogwartsConstants;
 import edu.hogwarts.util.ShoppingCart;
@@ -29,6 +31,9 @@ public class ShoppingCartController {
 	@Autowired
 	private CourseRepository courseRepository;
 	
+	@Autowired
+	private CourseMaterialRepository courseMaterialRepository;
+	
 	@RequestMapping(value="/restricted/shopping-cart", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView showCourses(HttpServletRequest request) {
 		
@@ -39,6 +44,8 @@ public class ShoppingCartController {
 	@RequestMapping(value="/restricted/shopping-cart/add-course/{id}", method= {RequestMethod.POST})
 	public ModelAndView addCourseToCart(HttpServletRequest request, @PathVariable(value="id") long id) {
 		
+		logger.debug("Adding course with id({}) to cart", id);
+		
 		Optional<Course> course = courseRepository.findById(id);
 		if (course.isPresent()) {
 			ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
@@ -48,6 +55,29 @@ public class ShoppingCartController {
 			
 			shoppingCart.add(course.get());
 			request.getSession().setAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART, shoppingCart);
+		} else {
+			logger.error("Course with id({}) does not exist!", id);
+		}
+		
+		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));
+	}
+	
+	@RequestMapping(value="/restricted/shopping-cart/add-course-material/{id}", method= {RequestMethod.POST})
+	public ModelAndView addCourseMaterialToCart(HttpServletRequest request, @PathVariable(value="id") long id) {
+		
+		logger.debug("Adding course material with id({}) to cart", id);
+		
+		Optional<CourseMaterial> courseMaterial = courseMaterialRepository.findById(id);
+		if (courseMaterial.isPresent()) {
+			ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
+			if (shoppingCart == null) {
+				shoppingCart = new ShoppingCart();
+			}
+			
+			shoppingCart.add(courseMaterial.get());
+			request.getSession().setAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART, shoppingCart);
+		} else {
+			logger.error("CourseMaterial with id({}) does not exist!", id);
 		}
 		
 		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));

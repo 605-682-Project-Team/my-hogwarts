@@ -14,7 +14,7 @@ public class ShoppingCart {
 	private Map<CourseMaterial, Integer> courseMaterials = new HashMap<CourseMaterial, Integer>();
 	
 	public int getNumberOfItems() {
-		return courses.size() + courseMaterials.keySet().size();
+		return courses.size() + courseMaterials.values().stream().mapToInt(i -> i.intValue()).sum();
 	}
 	
 	public void add(Course course) {

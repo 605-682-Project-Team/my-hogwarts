@@ -16,5 +16,15 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
 	 * @return Courses with category (if one exists)
 	 */
 	public Iterable<Course> findAllByCategory(CourseCategory category);
+	
+	/**
+	 * Find the courses with a particular name.
+	 * 
+	 * Note: Spring automatically generates the query and method implementation from the method name.
+	 * 
+	 * @param name
+	 * @return Courses with name (if one exists)
+	 */
+	public Iterable<Course> findAllByName(String name);
 
 }

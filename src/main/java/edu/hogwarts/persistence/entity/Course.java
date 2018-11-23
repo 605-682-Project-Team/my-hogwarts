@@ -1,10 +1,18 @@
 package edu.hogwarts.persistence.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Course {
@@ -22,7 +30,11 @@ public class Course {
 	
 	private CourseCategory category;
 	
-//	private List<CourseMaterial> materials;
+	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@JoinTable(name = "course_course_materials", 
+		joinColumns = @JoinColumn(name = "course_id"), 
+		inverseJoinColumns = @JoinColumn(name = "course_material_id"))
+	private List<CourseMaterial> courseMaterials;
 	
 	/**
 	 * @return the id
@@ -92,6 +104,18 @@ public class Course {
 	 */
 	public void setCategory(CourseCategory category) {
 		this.category = category;
+	}
+	
+	public List<CourseMaterial> getCourseMaterials() {
+		if (courseMaterials != null) {
+			return courseMaterials;
+		} else {
+			return new ArrayList<CourseMaterial>();
+		}
+	}
+	
+	public void setCourseMaterials(List<CourseMaterial> courseMaterials) {
+		this.courseMaterials = courseMaterials;
 	}
 
 	/* (non-Javadoc)
