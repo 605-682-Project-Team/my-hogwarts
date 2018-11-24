@@ -62,6 +62,27 @@ public class ShoppingCartController {
 		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));
 	}
 	
+	@RequestMapping(value="/restricted/shopping-cart/remove-course/{id}", method= {RequestMethod.POST})
+	public ModelAndView removeCourseToCart(HttpServletRequest request, @PathVariable(value="id") long id) {
+		
+		logger.debug("Removing course with id({}) to cart", id);
+		
+		Optional<Course> course = courseRepository.findById(id);
+		if (course.isPresent()) {
+			ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
+			if (shoppingCart == null) {
+				shoppingCart = new ShoppingCart();
+			}
+			
+			shoppingCart.remove(course.get());
+			request.getSession().setAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART, shoppingCart);
+		} else {
+			logger.error("Course with id({}) does not exist!", id);
+		}
+		
+		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));
+	}
+	
 	@RequestMapping(value="/restricted/shopping-cart/add-course-material/{id}", method= {RequestMethod.POST})
 	public ModelAndView addCourseMaterialToCart(HttpServletRequest request, @PathVariable(value="id") long id) {
 		
@@ -81,6 +102,58 @@ public class ShoppingCartController {
 		}
 		
 		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));
+	}
+	
+	@RequestMapping(value="/restricted/shopping-cart/update-course-material/{id}", method= {RequestMethod.POST})
+	public ModelAndView updateQuantityCourseMaterialToCart(HttpServletRequest request, @PathVariable(value="id") long id) {
+		
+		logger.debug("Updating quantity course material with id({}) to cart", id);
+		
+		Optional<CourseMaterial> courseMaterial = courseMaterialRepository.findById(id);
+		if (courseMaterial.isPresent()) {
+			ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
+			if (shoppingCart == null) {
+				shoppingCart = new ShoppingCart();
+			}
+			
+			Integer quantity = Integer.valueOf(request.getParameter("quantity"));
+			
+			shoppingCart.updateQuantity(courseMaterial.get(), quantity);
+			request.getSession().setAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART, shoppingCart);
+		} else {
+			logger.error("CourseMaterial with id({}) does not exist!", id);
+		}
+		
+		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));
+	}
+	
+	@RequestMapping(value="/restricted/shopping-cart/remove-course-material/{id}", method= {RequestMethod.POST})
+	public ModelAndView removeCourseMaterialToCart(HttpServletRequest request, @PathVariable(value="id") long id) {
+		
+		logger.debug("Removing course material with id({}) to cart", id);
+		
+		Optional<CourseMaterial> courseMaterial = courseMaterialRepository.findById(id);
+		if (courseMaterial.isPresent()) {
+			ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
+			if (shoppingCart == null) {
+				shoppingCart = new ShoppingCart();
+			}
+			
+			shoppingCart.remove(courseMaterial.get());
+			request.getSession().setAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART, shoppingCart);
+		} else {
+			logger.error("CourseMaterial with id({}) does not exist!", id);
+		}
+		
+		return new ModelAndView(new RedirectView(request.getHeader(HttpHeaders.REFERER)));
+	}
+	
+	@RequestMapping(value="/restricted/shopping-cart/checkout", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView checkout(HttpServletRequest request) {
+		
+		logger.debug("Checking out...");
+		
+		return new ModelAndView("restricted/checkout", new ModelMap());
 	}
 
 }

@@ -47,9 +47,9 @@
 	 			<table class="table table-hover">
 	 				<thead>
 	 					<tr>
-	 						<th>Course Name</th>
-	 						<th>Professor</th>
-	 						<th>Category</th>
+	 						<th></th>
+	 						<th>Name</th>
+	 						<th>Price</th>
 	 						<th></th>
 	 					</tr>
 	 				</thead>

@@ -48,7 +48,7 @@
 					<td class="align-middle" ><a href="<%= request.getContextPath() %>/restricted/course-material-listing/<%= courseMaterial.getId() %>"><%= courseMaterial.getName() %></a></td>
 					<td class="align-middle"><%= String.format("$%.2f", courseMaterial.getPrice()) %></td>
 					<td class="align-middle">
-						<form action="<%= request.getContextPath() %>/restricted/shopping-cart/add-course/<%= course.getId() %>" method="post">
+						<form action="<%= request.getContextPath() %>/restricted/shopping-cart/add-course-material/<%= courseMaterial.getId() %>" method="post">
 							<input type="submit" class="btn btn-primary btn-md" value="Add to Cart" />
 						</form>
 					</td>

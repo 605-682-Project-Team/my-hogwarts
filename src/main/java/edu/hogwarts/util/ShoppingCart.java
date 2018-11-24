@@ -17,6 +17,14 @@ public class ShoppingCart {
 		return courses.size() + courseMaterials.values().stream().mapToInt(i -> i.intValue()).sum();
 	}
 	
+	public Set<Course> getCourses() {
+		return new HashSet<Course>(courses);
+	}
+	
+	public Map<CourseMaterial, Integer> getCourseMaterials() {
+		return new HashMap<CourseMaterial, Integer>(courseMaterials);
+	}
+	
 	public void add(Course course) {
 		courses.add(course);
 	}
@@ -40,6 +48,14 @@ public class ShoppingCart {
 	
 	public void remove(CourseMaterial courseMaterial) {
 		courseMaterials.remove(courseMaterial);
+	}
+	
+	public void updateQuantity(CourseMaterial courseMaterial, Integer quantity) {
+		if (quantity <= 0) {
+			courseMaterials.remove(courseMaterial);
+		} else {
+			courseMaterials.put(courseMaterial, quantity);
+		}
 	}
 	
 	public boolean hasCourseMaterial(CourseMaterial courseMaterial) {
