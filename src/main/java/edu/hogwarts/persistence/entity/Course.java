@@ -159,9 +159,19 @@ public class Course {
 	}
 
 	public enum CourseCategory {
-		CORE,
-		ELECTIVE,
-		EXTRA_CURRICULAR
+		CORE("Core"),
+		ELECTIVE("Elective"),
+		EXTRA_CURRICULAR("Extra Curricular");
+		
+		private String display;
+		
+		private CourseCategory(String display) {
+			this.display = display;
+		}
+		
+		public String display() {
+			return display;
+		}
 	}
 
 }

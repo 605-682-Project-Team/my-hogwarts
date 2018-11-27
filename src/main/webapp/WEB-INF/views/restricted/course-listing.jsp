@@ -30,13 +30,13 @@
 	 							
 	 						%>
 	 						<div class="radio">
-	  							<label><input type="radio" name="category" value="<%= CourseCategory.CORE %>" <%if (CourseCategory.CORE.equals(checked)) { %> checked <% } %>><%= CourseCategory.CORE %></label>
+	  							<label><input type="radio" name="category" value="<%= CourseCategory.CORE %>" <%if (CourseCategory.CORE.equals(checked)) { %> checked <% } %>><%= CourseCategory.CORE.display() %></label>
 							</div>
 							<div class="radio">
-							    <label><input type="radio" name="category" value="<%= CourseCategory.ELECTIVE %>" <%if (CourseCategory.ELECTIVE.equals(checked)) { %> checked <% } %>><%= CourseCategory.ELECTIVE %></label>
+							    <label><input type="radio" name="category" value="<%= CourseCategory.ELECTIVE %>" <%if (CourseCategory.ELECTIVE.equals(checked)) { %> checked <% } %>><%= CourseCategory.ELECTIVE.display() %></label>
 							</div>
 							<div class="radio">
-	  							<label><input type="radio" name="category" value="<%= CourseCategory.EXTRA_CURRICULAR %>" <%if (CourseCategory.EXTRA_CURRICULAR.equals(checked)) { %> checked <% } %>><%= CourseCategory.EXTRA_CURRICULAR %></label>
+	  							<label><input type="radio" name="category" value="<%= CourseCategory.EXTRA_CURRICULAR %>" <%if (CourseCategory.EXTRA_CURRICULAR.equals(checked)) { %> checked <% } %>><%= CourseCategory.EXTRA_CURRICULAR.display() %></label>
 							</div>
 		 				</div>
 		 				<div class="card-footer">
@@ -63,7 +63,7 @@
 	 					<tr>
 	 						<td><a href="course-listing/<%= course.getId() %>"><%= course.getName() %></a></td>
 	 						<td><%= course.getProfessor() %></td>
-	 						<td><%= course.getCategory() %></td>
+	 						<td><%= course.getCategory().display() %></td>
 	 						<td>
 	 							<form action="<%= request.getContextPath() %>/restricted/shopping-cart/add-course/<%= course.getId() %>" method="post">
 									<input type="submit" class="btn btn-primary btn-md" value="Add to Cart" />
