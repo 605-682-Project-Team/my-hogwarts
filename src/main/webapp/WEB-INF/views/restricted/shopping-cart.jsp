@@ -85,7 +85,7 @@
 							</div>
 		 				</div>
 		 				<div class="card-footer text-center">
-		 					<button class="btn btn-success btn-md" type="submit">Checkout</button>
+		 					<button class="btn btn-success btn-md btn-block" type="submit">Checkout</button>
 		 				</div>
 		 			</div>
 					</form>
@@ -130,6 +130,7 @@
 			<% if (courses.size() == 0) { %>
 				<p class="font-italic text-center">No course materials in cart.</p>
 			<% } %>
+			<hr/>
 	 </div>
 	 
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2018 Hogwarts School of Witchcraft and Wizardry</p>

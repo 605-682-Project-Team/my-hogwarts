@@ -40,7 +40,7 @@
 							</div>
 		 				</div>
 		 				<div class="card-footer">
-		 					<button class="btn btn-success btn-md" type="submit">Refresh</button>
+		 					<button class="btn btn-success btn-md btn-block" type="submit">Refresh</button>
 		 				</div>
 		 			</div>
 	 			</form>
