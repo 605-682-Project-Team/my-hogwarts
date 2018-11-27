@@ -27,11 +27,16 @@ private final Logger logger = LoggerFactory.getLogger(CourseMaterialController.c
 	
 	@RequestMapping(value="/restricted/course-material-listing", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView showCourses(HttpServletRequest request) {
-		Iterable<CourseMaterial> coursesMaterials;
+		Iterable<CourseMaterial> courseMaterials;
 		
-		coursesMaterials = courseMaterialRepository.findAll();
+		String courseMaterialName = (String) request.getParameter("courseMaterialName");
+		if (courseMaterialName != null && !courseMaterialName.isEmpty()) {
+			courseMaterials = courseMaterialRepository.findAllByNameContaining(courseMaterialName);
+		} else {
+			courseMaterials = courseMaterialRepository.findAll();
+		}
 		
-		request.setAttribute("courseMaterials", coursesMaterials);
+		request.setAttribute("courseMaterials", courseMaterials);
 		
 		return new ModelAndView("restricted/course-material-listing", new ModelMap());
 	}

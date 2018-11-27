@@ -12,30 +12,18 @@
 	 <div class="container">
 	 	<div class="row" >
 	 		<div class="col-md-3">
-	 			<form action="course-listing" method="post">
+	 			<form action="course-material-listing" method="post">
 		 			<div class="card">
 		 				<div class="card-header">Filters</div>
 		 				<div class="card-body">
-	 						<h5 class="card-title">Category</h5>
-<%-- 	 						<%
-// 	 							CourseCategory checked;
-// 	 							String checkedStr = request.getParameter("category");
-// 	 							if (checkedStr == null || checkedStr.isEmpty()) {
-// 	 								checked = null;
-// 	 							} else {
-// 	 								checked = CourseCategory.valueOf(checkedStr);
-// 	 							}
-	 							
-	 						%> --%>
-<!-- 	 						<div class="radio"> -->
-<%-- 	  							<label><input type="radio" name="category" value="<%= CourseCategory.CORE %>" <%if (CourseCategory.CORE.equals(checked)) { %> checked <% } %>><%= CourseCategory.CORE %></label> --%>
-<!-- 							</div> -->
-<!-- 							<div class="radio"> -->
-<%-- 							    <label><input type="radio" name="category" value="<%= CourseCategory.ELECTIVE %>" <%if (CourseCategory.ELECTIVE.equals(checked)) { %> checked <% } %>><%= CourseCategory.ELECTIVE %></label> --%>
-<!-- 							</div> -->
-<!-- 							<div class="radio"> -->
-<%-- 	  							<label><input type="radio" name="category" value="<%= CourseCategory.EXTRA_CURRICULAR %>" <%if (CourseCategory.EXTRA_CURRICULAR.equals(checked)) { %> checked <% } %>><%= CourseCategory.EXTRA_CURRICULAR %></label> --%>
-<!-- 							</div> -->
+	 						<h5 class="card-title">Name</h5>
+	 						<%
+	 							String name = (String) request.getParameter("courseMaterialName");
+	 							if (name == null) {
+	 								name = "";
+	 							}
+	 						%>
+	 						<input type="text" name="courseMaterialName" value="<%= name %>" />
 		 				</div>
 		 				<div class="card-footer">
 		 					<button class="btn btn-success btn-md" type="submit">Refresh</button>
