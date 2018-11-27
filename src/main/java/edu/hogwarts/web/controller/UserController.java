@@ -1,6 +1,7 @@
 package edu.hogwarts.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.hogwarts.persistence.entity.User;
 import edu.hogwarts.persistence.repository.UserRepository;
+import edu.hogwarts.util.HogwartsConstants;
 
 @Controller
 public class UserController {
@@ -40,6 +42,28 @@ public class UserController {
 		logger.info("Created user - {}", user.getEmail());
 		
 		// TODO set message that user was created successfully
+		
+		return new ModelAndView("redirect:/", new ModelMap());
+	}
+	
+	@RequestMapping(value="/restricted/user/update", method=RequestMethod.POST)
+	public ModelAndView updateUser(HttpServletRequest request) {
+		logger.info("Updating user.");
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(HogwartsConstants.ATTRIBUTE_CURRENT_USER);
+		
+		user.setFirstname(request.getParameter("firstname"));
+		user.setLastname(request.getParameter("lastname"));
+		user.setEmail(request.getParameter("email"));
+		user.setPassword(request.getParameter("password")); // TODO this should be hashed and stored
+		user.setStreetAddress(request.getParameter("streetAddress"));
+		user.setCity(request.getParameter("city"));
+		user.setState(request.getParameter("state"));
+		user.setZipcode(request.getParameter("zipcode"));
+		user.setYear(Integer.parseInt(request.getParameter("year")));
+		user.setMuggleborn(request.getParameter("muggleBorn") == "true");
+		userRepository.save(user);
+		logger.info("Updated user - {}", user.getEmail());
 		
 		return new ModelAndView("redirect:/", new ModelMap());
 	}
