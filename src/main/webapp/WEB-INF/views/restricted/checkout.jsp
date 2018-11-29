@@ -12,6 +12,13 @@
 	  font-weight: bold;
 	}
 	</style>
+	<script>
+    function openPage(pageURL)
+    {
+    	window.location.href = pageURL;
+    }
+	</script>
+	
 </head>
 
 <%@page import="edu.hogwarts.persistence.entity.Course"%>
@@ -104,17 +111,13 @@
 						</div>
 						<hr>
 						<div class="row">
-							<div class="font-weight-bold text-right col-md-7">Total:</div><div class="text-right col-md-5"><%= String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %></div>
+							<div class="font-weight-bold text-right col-md-7">Total: </div><div class="text-right col-md-5"><%= String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %></div>
 						</div>
-		 				<div class="card-footer text-center">
-		 					<button class="btn btn-success btn-md" type="submit">Place Order</button>
-		 				</div>
+						<input class="button" type="button" name="Submit" value="Place Order" onclick="openPage('confirmation.jsp')" >
 	 				</div>
 		 		</div>
-		 		
  			</div>
 		</div>
-	</div>
 	 
       <p class="mt-5 mb-3 text-muted text-center">&copy; 2018 Hogwarts School of Witchcraft and Wizardry</p>
 </body>
