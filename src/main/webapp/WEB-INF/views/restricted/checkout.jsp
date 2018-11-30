@@ -113,7 +113,9 @@
 						<div class="row">
 							<div class="font-weight-bold text-right col-md-7">Total: </div><div class="text-right col-md-5"><%= String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %></div>
 						</div>
-						<input class="button" type="button" name="Submit" value="Place Order" onclick="openPage('confirmation.jsp')" >
+						<form action="<%= request.getContextPath() %>/restricted/shopping-cart/confirmation" method="post">
+		 					<button class="btn btn-success btn-md btn-block" type="submit">Place Order</button>
+		 			    </form>
 	 				</div>
 		 		</div>
  			</div>

@@ -4,7 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page import="java.util.*"%>
-<%@ page import="javax.mail.MessagingException"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="edu.hogwarts.util.MailUtilGmail"%>
 <%@page import="edu.hogwarts.persistence.entity.Course"%>
@@ -140,27 +139,27 @@
 	            String from = "webappdeveljhu@gmail.com";
 	            String subject = "Confirmation from  Hogwarts!";
 	            boolean isBodyHTML = true;
-				try
 	            {
 	                MailUtilGmail.sendMail(to, from, subject, message, isBodyHTML);
-	            } catch (MessagingException e) {
-	                String errorMessage
-	                        = "ERROR: Unable to send email. "
-	                        + "Check Tomcat logs for details.<br>"
-	                        + "NOTE: You may need to configure your system "
-	                        + "as described in chapter 14.<br>"
-	                        + "ERROR MESSAGE: " + e.getMessage();
-	                request.setAttribute("errorMessage", errorMessage);
-	                this.log(
-	                        "Unable to send email. \n"
-	                        + "Here is the email you tried to send: \n"
-	                        + "=====================================\n"
-	                        + "TO: " + emailAddress + "\n"
-	                        + "FROM: " + from + "\n"
-	                        + "SUBJECT: " + subject + "\n"
-	                        + "\n"
-	                        + message + "\n\n");
-	            } 
+	            }
+// 				catch (MessagingException e) {
+// 	                String errorMessage
+// 	                        = "ERROR: Unable to send email. "
+// 	                        + "Check Tomcat logs for details.<br>"
+// 	                        + "NOTE: You may need to configure your system "
+// 	                        + "as described in chapter 14.<br>"
+// 	                        + "ERROR MESSAGE: " + e.getMessage();
+// 	                request.setAttribute("errorMessage", errorMessage);
+// 	                this.log(
+// 	                        "Unable to send email. \n"
+// 	                        + "Here is the email you tried to send: \n"
+// 	                        + "=====================================\n"
+// 	                        + "TO: " + emailAddress + "\n"
+// 	                        + "FROM: " + from + "\n"
+// 	                        + "SUBJECT: " + subject + "\n"
+// 	                        + "\n"
+// 	                        + message + "\n\n");
+// 	            }
     %>  
     <h3>A confirmation email has been sent. Thanks for placing your order! Below is a summary of what you have ordered</h3>
     

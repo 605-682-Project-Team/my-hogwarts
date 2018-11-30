@@ -155,5 +155,13 @@ public class ShoppingCartController {
 		
 		return new ModelAndView("restricted/checkout", new ModelMap());
 	}
+	
+	@RequestMapping(value="/restricted/shopping-cart/confirmation", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView confirmation(HttpServletRequest request) {
+		
+		logger.debug("Placing order...");
+		
+		return new ModelAndView("restricted/confirmation", new ModelMap());
+	}
 
 }
