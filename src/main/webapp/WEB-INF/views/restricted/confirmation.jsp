@@ -46,7 +46,7 @@
 	    				 	"<title>My Hogwarts Checkout</title>" + 
 	    					"</head>" +
 	    					"<body class=\"bg-light\">" +
-	    					" 	<h4>A confirmation email has been sent. Thanks for placing your order! Below is a summary of what you have ordered</h4>" + 
+	    					" 	    <p align=\"center\">A confirmation email has been sent. Thanks for placing your order! Here is a summary:</p>" + 
 			    			"	<div class=\"col-md-8\">" + 
 							" 		<h4>Courses</h4>" + 
 							" 		<table>" +
@@ -163,7 +163,7 @@
 	                        + message + "\n\n");
 	            }
     %>  
-    <p>	A confirmation email has been sent. Thanks for placing your order! Here is a summary:</p>
+    <p align="center">A confirmation email has been sent. Thanks for placing your order! Here is a summary:</p>
     
    	 <div class="container">
 		<div class="row">
@@ -227,7 +227,7 @@
 			<% } %>
 			<hr/>
 			
-		<h3>Your total is: <%=String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %> </h3>
+		<h3 align="center">Your total is: <%=String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %> </h3>
 	 </div>
 	 
 	 

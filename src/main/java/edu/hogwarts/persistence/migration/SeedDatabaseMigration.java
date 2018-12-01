@@ -43,6 +43,48 @@ public class SeedDatabaseMigration {
 		telescope.setPrice(150.00);
 		telescope.setImageName("telescope.jpg");
 		courseMaterialRepository.save(telescope);
+				
+		CourseMaterial wand = new CourseMaterial();
+		wand.setName("Wand");
+		wand.setDescription("A wand is the object through which a witch or wizard channels his or her magic. It is made from wood and has a magical substance at its core. Wands made by Ollivander have cores of phoenix feather, unicorn hair or dragon heartstring, and are of varying woods, lengths, and flexibilities." );
+		wand.setPrice(50.00);
+		wand.setImageName("wand.png");
+		courseMaterialRepository.save(wand);
+		
+		CourseMaterial robes = new CourseMaterial();
+		robes.setName("Plain Black Work Robes (Set of Three)");
+		robes.setDescription("Plain work robes are a basic variety of robes. They provide greater defence, agility, magical strength, and magical defence than standard Muggle clothing.[1] Three sets of black plain work robes are required for Hogwarts School of Witchcraft and Wizardry students, as they make up the main constituent of the Hogwarts uniform.");
+		robes.setPrice(100.00);
+		robes.setImageName("robe.png");
+		courseMaterialRepository.save(robes);
+		
+		CourseMaterial gloves = new CourseMaterial();
+		gloves.setName("Protective Gloves");
+		gloves.setDescription("Protective gloves are gloves made of dragon hide or other similar materials.[1] They are used to protect one's hands against smelly compost or vicious plants.");
+		gloves.setPrice(25.00);
+		gloves.setImageName("gloves.png");
+		courseMaterialRepository.save(gloves);
+		
+		CourseMaterial hat = new CourseMaterial();
+		hat.setName("Pointed Hat (Black)");
+		hat.setDescription("A pointed hat is a type of hat commonly worn by wizardkind. A plain black pointed hat is required to be worn during the day by all Hogwarts School of Witchcraft and Wizardry students as part of the Hogwarts uniform.");
+		hat.setPrice(50.00);
+		hat.setImageName("hat.jpg");
+		courseMaterialRepository.save(hat);
+		
+		CourseMaterial cloak = new CourseMaterial();
+		cloak.setName("One Winter Cloak");
+		cloak.setDescription("A winter cloak is a type of cloak designed to keep the wearer warm in cold weather. Compared to plain work robes, a winter cloak provides more defence, magic strength, and magic defence, but substantially less agility (but still more than standard Muggle clothing).[1] Winter cloaks could be purchased at Madam Malkin's Robes for All Occasions[2] for one hundred and fifty Sickles.[1]. A black winter cloak with silver fastenings was required for all Hogwarts School of Witchcraft and Wizardry students, and expected to be worn as part of the school uniform in colder weather.");
+		cloak.setPrice(50.00);
+		cloak.setImageName("cloak.jpeg");
+		courseMaterialRepository.save(cloak);
+		
+		CourseMaterial cauldron = new CourseMaterial();
+		cauldron.setName("Cauldron (pewter, standard size 2)");
+		cauldron.setDescription("A cauldron is a vessel similar to a bucket or kettle and is used to brew and hold potions and also may be used to carry supplies. Cauldrons are heated over an open fire and can be hung over a fire from an iron handle.");
+		cauldron.setPrice(25.00);
+		cauldron.setImageName("cauldron.jpg");
+		courseMaterialRepository.save(cauldron);
 		
 		CourseMaterial darkForcesBook = new CourseMaterial();
 		darkForcesBook.setName("The Dark Forces: A Guide to Self-Protection");
@@ -50,6 +92,28 @@ public class SeedDatabaseMigration {
 		darkForcesBook.setPrice(75.00);
 		darkForcesBook.setImageName("dark-forces-book.png");
 		courseMaterialRepository.save(darkForcesBook);
+		
+		CourseMaterial standardSpells = new CourseMaterial();
+		standardSpells.setName("The Standard Book of Spells, Grade 1");
+		standardSpells.setDescription("The Standard Book of Spells, Grade 1 was the first book in The Standard Book of Spells series, written by Miranda Goshawk. It was a required textbook for first year students at Hogwarts School of Witchcraft and Wizardry.");
+		standardSpells.setPrice(75.00);
+		standardSpells.setImageName("standardSpells.png");
+		courseMaterialRepository.save(standardSpells);
+		
+		CourseMaterial magicBook = new CourseMaterial();
+		magicBook.setName("A History of Magic");
+		magicBook.setDescription("A History of Magic was a book written by Bathilda Bagshot, one of the most eminent magical historians to date. It covered the history of the wizarding world up to the end of the 19th century. The contents of the book covered various people and events such as: witch hunts, goblin rebellions, Uric the Oddball, giant wars, and other events as well. This book cost two galleons at Flourish and Blotts.");
+		magicBook.setPrice(75.00);
+		magicBook.setImageName("magicBook.jpg");
+		courseMaterialRepository.save(magicBook);
+		
+		CourseMaterial beastsBook = new CourseMaterial();
+		beastsBook.setName("Fantastic Beasts and Where to Find Them ");
+		beastsBook.setDescription("Fantastic Beasts and Where to Find Them is a book written by Newt Scamander detailing magizoology and describing magical creatures. It was a standard textbook at Hogwarts School of Witchcraft and Wizardry since it was written in 1927.");
+		beastsBook.setPrice(75.00);
+		beastsBook.setImageName("beastsBook.jpg");
+		courseMaterialRepository.save(beastsBook);
+		
 		
 		/**********************************************************************
 		 *  CORE Courses
