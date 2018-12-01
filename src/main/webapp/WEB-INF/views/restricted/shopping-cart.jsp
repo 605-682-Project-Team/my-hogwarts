@@ -127,7 +127,7 @@
 					<% } %>
 				</tbody>
 			</table>
-			<% if (courses.size() == 0) { %>
+			<% if (courseMaterials.keySet().size() == 0) { %>
 				<p class="font-italic text-center">No course materials in cart.</p>
 			<% } %>
 			<hr/>

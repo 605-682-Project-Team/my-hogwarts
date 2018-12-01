@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="third-slide" src="<%= request.getContextPath() %>/resources/images/great-hall.jpg" alt="Third slide">
+            <img class="third-slide" src="<%= request.getContextPath() %>/resources/images/hall.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
                 <h1>World Class Dining</h1>

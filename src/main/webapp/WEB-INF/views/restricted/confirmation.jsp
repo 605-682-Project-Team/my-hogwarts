@@ -6,6 +6,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="edu.hogwarts.util.MailUtilGmail"%>
+<%@ page import="javax.mail.MessagingException"%>
 <%@page import="edu.hogwarts.persistence.entity.Course"%>
 <%@page import="edu.hogwarts.persistence.entity.CourseMaterial"%>
 <%@page import="edu.hogwarts.util.HogwartsConstants"%>
@@ -45,7 +46,7 @@
 	    				 	"<title>My Hogwarts Checkout</title>" + 
 	    					"</head>" +
 	    					"<body class=\"bg-light\">" +
-	    					" 	<h3>A confirmation email has been sent. Thanks for placing your order! Below is a summary of what you have ordered</h3>" + 
+	    					" 	<h4>A confirmation email has been sent. Thanks for placing your order! Below is a summary of what you have ordered</h4>" + 
 			    			"	<div class=\"col-md-8\">" + 
 							" 		<h4>Courses</h4>" + 
 							" 		<table>" +
@@ -120,7 +121,7 @@
 				message +=  " <p class=\"font-italic text-center\">No course materials in cart.</p>";
 		}
 				message +=  " <hr/>" + 
-							" <h3> Your total is: " + (courseSubtotal + courseMaterialSubtotal) + " </h3>" + 
+							" <h3> Your total is: $" + (courseSubtotal + courseMaterialSubtotal) + " </h3>" + 
 							" </div" + 
 							" <p class=\"mt-5 mb-3 text-muted text-center\">&copy; 2018 Hogwarts School of Witchcraft and Wizardry</p> " +
 							" </body> " + 
@@ -139,33 +140,33 @@
 	            String from = "webappdeveljhu@gmail.com";
 	            String subject = "Confirmation from  Hogwarts!";
 	            boolean isBodyHTML = true;
+	            try
 	            {
 	                MailUtilGmail.sendMail(to, from, subject, message, isBodyHTML);
 	            }
-// 				catch (MessagingException e) {
-// 	                String errorMessage
-// 	                        = "ERROR: Unable to send email. "
-// 	                        + "Check Tomcat logs for details.<br>"
-// 	                        + "NOTE: You may need to configure your system "
-// 	                        + "as described in chapter 14.<br>"
-// 	                        + "ERROR MESSAGE: " + e.getMessage();
-// 	                request.setAttribute("errorMessage", errorMessage);
-// 	                this.log(
-// 	                        "Unable to send email. \n"
-// 	                        + "Here is the email you tried to send: \n"
-// 	                        + "=====================================\n"
-// 	                        + "TO: " + emailAddress + "\n"
-// 	                        + "FROM: " + from + "\n"
-// 	                        + "SUBJECT: " + subject + "\n"
-// 	                        + "\n"
-// 	                        + message + "\n\n");
-// 	            }
+				catch (MessagingException e) {
+	                String errorMessage
+	                        = "ERROR: Unable to send email. "
+	                        + "Check Tomcat logs for details.<br>"
+	                        + "NOTE: You may need to configure your system "
+	                        + "as described in chapter 14.<br>"
+	                        + "ERROR MESSAGE: " + e.getMessage();
+	                request.setAttribute("errorMessage", errorMessage);
+	                this.log(
+	                        "Unable to send email. \n"
+	                        + "Here is the email you tried to send: \n"
+	                        + "=====================================\n"
+	                        + "TO: " + emailAddress + "\n"
+	                        + "FROM: " + from + "\n"
+	                        + "SUBJECT: " + subject + "\n"
+	                        + "\n"
+	                        + message + "\n\n");
+	            }
     %>  
-    <h3>A confirmation email has been sent. Thanks for placing your order! Below is a summary of what you have ordered</h3>
+    <p>	A confirmation email has been sent. Thanks for placing your order! Here is a summary:</p>
     
    	 <div class="container">
 		<div class="row">
-		 	<div class="col-md-8">
 			 	<h4>Courses</h4>
 			 	<table class="table table-hover">
 					<thead>
@@ -193,7 +194,6 @@
 				<% } %>
 		
 				<hr/>
-			</div>
 		</div>
 		<h4>Course Materials</h4>
 			<table class="table table-hover">
@@ -214,18 +214,9 @@
 						<td><img class="material-icon" src="<%= request.getContextPath() %>/resources/images/course-materials/<%= courseMaterial.getImageName() %>" height="100" width="100"></td>
 						<td class="align-middle" ><a href="course-material-listing/<%= courseMaterial.getId() %>"><%= courseMaterial.getName() %></a></td>
 						<td class="align-middle">
-							<form id="formUpdate<%= courseMaterial.getId() %>" action="<%= request.getContextPath() %>/restricted/shopping-cart/update-course-material/<%= courseMaterial.getId() %>" method="post">
-								<input style="width:2.5em" name="quantity" type="number" value="<%= courseMaterials.get(courseMaterial) %>"/>x<%= String.format("$%.2f", courseMaterial.getPrice()) %>
-							</form>
 						</td>
 						<td class="align-middle"><%= String.format("$%.2f", courseMaterial.getPrice() * courseMaterials.get(courseMaterial)) %></td>	
 						<td class="align-middle text-right" style="width:13em" >
-								
-								<button id="Update<%= courseMaterial.getId() %>" class="btn btn-warning btn-md">Update</button>
-								
-								<form style="display: inline-block;" action="<%= request.getContextPath() %>/restricted/shopping-cart/remove-course-material/<%= courseMaterial.getId() %>" method="post">
-									<input type="submit" class="btn btn-danger btn-md" value="Remove" />
-								</form>
 						</td>
 					</tr>
 					<% } %>
@@ -236,8 +227,10 @@
 			<% } %>
 			<hr/>
 			
-		<h3>Your total is: <%= String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %> </h3>
+		<h3>Your total is: <%=String.format("$%.2f", courseSubtotal + courseMaterialSubtotal) %> </h3>
 	 </div>
+	 
+	 
 	 
 	 
 	 
