@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: junit:junit:">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Could not find junit:junit:.&#10;Searched in the following locations:&#10;    https:/repo1.maven.org/maven2/junit/junit/junit-.pom&#10;    https:/repo1.maven.org/maven2/junit/junit/junit-.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
