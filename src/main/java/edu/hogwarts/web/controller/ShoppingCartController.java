@@ -158,6 +158,13 @@ public class ShoppingCartController {
     public ModelAndView confirmation(HttpServletRequest request) {
 
         logger.debug("Placing order...");
+        
+        // order complete, clear shopping cart from session
+        ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
+        request.getSession().removeAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
+        
+        // include as request attribute to display in confirmation view
+        request.setAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART, shoppingCart);
 
         return new ModelAndView("restricted/confirmation", new ModelMap());
     }

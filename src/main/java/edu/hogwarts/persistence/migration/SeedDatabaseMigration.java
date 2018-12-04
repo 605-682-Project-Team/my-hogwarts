@@ -140,7 +140,7 @@ public class SeedDatabaseMigration {
         course.setProfessor("Filius Flitwick");
         course.setCategory(CourseCategory.CORE);
         course.setDescription("Charms is a course that teaches how to cast the class of spells known as Charms. These are spells that alter an object without changing its essential nature. Given a teapot, the spell that makes it tapdance across the desk would be a charm, the spell that turns it into a tortoise would not. This is a core subject, required of all Hogwarts students until at least their fifth year. ");
-        course.setCourseMaterials(Arrays.asList(quill, parchment));
+        course.setCourseMaterials(Arrays.asList(standardSpells, wand));
         courseRepository.save(course);
 
         course = new Course();
@@ -156,7 +156,7 @@ public class SeedDatabaseMigration {
         course.setProfessor("Severus Snape");
         course.setCategory(CourseCategory.CORE);
         course.setDescription("Potions is a core class and subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry. In this class, students learn the correct way to brew potions. They follow specific recipes and use various magical ingredients to create the potions, starting with simple ones and moving to more advanced ones as they progress in knowledge. A standard potions kit includes plant ingredients such as Belladonna and supplies such as glass phials and weighing scales.");
-        course.setCourseMaterials(Arrays.asList(quill, parchment));
+        course.setCourseMaterials(Arrays.asList(quill, parchment, cauldron));
         courseRepository.save(course);
 
         course = new Course();
@@ -175,7 +175,7 @@ public class SeedDatabaseMigration {
         course.setProfessor("Gilderoy Lockhart");
         course.setCategory(CourseCategory.ELECTIVE);
         course.setDescription("Alchemy is an elective course taught at Hogwarts School of Witchcraft and Wizardry. The course is open to sixth and seventh-years if there are enough students interested in taking the subject. The ancient science of Alchemy focuses on the study of nature's four basic elements (fire, earth, air, and water), as well as the transmutation of substances (such as base metals into gold).");
-        course.setCourseMaterials(Arrays.asList(quill, parchment));
+        course.setCourseMaterials(Arrays.asList(quill, parchment, cauldron));
         courseRepository.save(course);
 
         course = new Course();
@@ -183,7 +183,7 @@ public class SeedDatabaseMigration {
         course.setProfessor("Horace Slughorn");
         course.setCategory(CourseCategory.ELECTIVE);
         course.setDescription("Apparition is an optional twelve-week course offered at Hogwarts School of Witchcraft and Wizardry for learning how to Apparate, with the intention of receiving a licence from the age of seventeen.");
-        course.setCourseMaterials(Arrays.asList(quill, parchment));
+        course.setCourseMaterials(Arrays.asList(quill, parchment, wand));
         courseRepository.save(course);
 
         course = new Course();
@@ -191,7 +191,7 @@ public class SeedDatabaseMigration {
         course.setProfessor("Rebeus Hagrid");
         course.setCategory(CourseCategory.ELECTIVE);
         course.setDescription("Care of Magical Creatures is an elective course at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry that can be chosen by students in their third year. In the class, students learn about a wide range of magical creatures, from flobberworms to fire crabs, and even unicorns and thestrals. Students are taught about feeding, maintaining, breeding, and proper treatment of these creatures.");
-        course.setCourseMaterials(Arrays.asList(quill, parchment));
+        course.setCourseMaterials(Arrays.asList(quill, parchment, beastsBook));
         courseRepository.save(course);
 
         course = new Course();
@@ -219,7 +219,7 @@ public class SeedDatabaseMigration {
         course.setProfessor("Quirinus Quirrell");
         course.setCategory(CourseCategory.EXTRA_CURRICULAR);
         course.setDescription("Magical Theory is a subject taught at Hogwarts School of Witchcraft and Wizardry, taken at least in the first year. It covers magic from a purely theoretical standpoint, including the topic of how spells work, according to the ad for the book Magical Theory.");
-        course.setCourseMaterials(Arrays.asList(quill, parchment));
+        course.setCourseMaterials(Arrays.asList(quill, parchment, magicBook));
         courseRepository.save(course);
 
         course = new Course();

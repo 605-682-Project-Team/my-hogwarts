@@ -11,7 +11,6 @@
 <%@page import="java.util.Map" %>
 <%@page import="java.util.Set" %>
 
-!DOCTYPE html>
 <html>
 <head>
     <%@ include file="fragments/resources.jsp" %>
@@ -23,6 +22,7 @@
 
 <%
     // navbar.jsp defines shoppingCart
+    shoppingCart = (ShoppingCart) request.getAttribute(HogwartsConstants.ATTRIBUTE_SHOPPING_CART);
     if (shoppingCart == null) {
         shoppingCart = new ShoppingCart();
     }

@@ -61,5 +61,10 @@ public class ShoppingCart {
     public boolean hasCourseMaterial(CourseMaterial courseMaterial) {
         return courseMaterials.containsKey(courseMaterial);
     }
+    
+    public void clear() {
+    	courses.clear();
+    	courseMaterials.clear();
+    }
 
 }
