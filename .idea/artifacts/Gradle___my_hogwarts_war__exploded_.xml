@@ -28,6 +28,7 @@
           <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Gradle: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Gradle: javax.servlet:javax.servlet-api:4.0.1" />
+          <element id="library" level="project" name="Gradle: javax.mail:mail:1.4.1" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-context:5.1.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-aop:5.1.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-web:5.0.9.RELEASE" />
@@ -42,8 +43,9 @@
           <element id="library" level="project" name="Gradle: org.jboss.logging:jboss-logging:3.3.2.Final" />
           <element id="library" level="project" name="Gradle: com.fasterxml:classmate:1.3.4" />
           <element id="library" level="project" name="Gradle: com.google.protobuf:protobuf-java:3.6.1" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-jcl:5.1.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.4.Final" />
+          <element id="library" level="project" name="Gradle: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-jcl:5.1.1.RELEASE" />
           <element id="library" level="project" name="Gradle: org.javassist:javassist:3.23.1-GA" />
           <element id="library" level="project" name="Gradle: net.bytebuddy:byte-buddy:1.8.17" />
           <element id="library" level="project" name="Gradle: antlr:antlr:2.7.7" />
@@ -51,8 +53,6 @@
           <element id="library" level="project" name="Gradle: org.jboss:jandex:2.0.5.Final" />
           <element id="library" level="project" name="Gradle: javax.activation:javax.activation-api:1.2.0" />
           <element id="library" level="project" name="Gradle: org.dom4j:dom4j:2.1.1" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.mail/mail/1.4.1/8b7bc69010655425dabf091b51d1e90b4de36715/mail-1.4.1.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar" />
         </element>
       </element>
     </root>

@@ -40,7 +40,7 @@
     <error-page>
         <!-- Missing resource -->
         <error-code>404</error-code>
-        <location>/views/error404.html</location>
+        <location>/error404.html</location>
     </error-page>
 
     <security-constraint>
